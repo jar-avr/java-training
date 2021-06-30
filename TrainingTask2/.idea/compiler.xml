@@ -9,8 +9,5 @@
         <module name="TrainingTask2" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="TrainingTask2" target="14" />
-    </bytecodeTargetLevel>
   </component>
 </project>
