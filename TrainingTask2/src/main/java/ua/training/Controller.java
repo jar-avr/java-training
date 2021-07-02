@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * Controller of the program.
  *
- * @version 1.0 24 June 2021
+ * @version 1.0 30 June 2021
  * @author Yaroslav Avramenko
  */
 public class Controller {
