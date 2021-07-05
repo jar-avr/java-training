@@ -13,3 +13,4 @@ buildNumber.properties
 /misc.xml
 /vcs.xml
 /workspace.xml
+/.gitignore
