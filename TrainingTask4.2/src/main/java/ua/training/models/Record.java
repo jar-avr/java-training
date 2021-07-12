@@ -39,4 +39,13 @@ public class Record {
     public void setLogin(String login) {
         this.login = login;
     }
+
+    public void setAndCheckLogin(String login) throws IllegalArgumentException {
+        this.setLogin(login);
+        for (Record writtenRecord : Notebook.getNotebook()) {
+            if (writtenRecord.getLogin().equals(login)) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }

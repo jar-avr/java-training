@@ -9,22 +9,22 @@ import java.util.LinkedHashSet;
  * @author Yaroslav Avramenko
  */
 public class Notebook {
-    private LinkedHashSet<Record> notebook;
+    private static LinkedHashSet<Record> notebook;
 
     public Notebook() {
         notebook = new LinkedHashSet<>();
     }
 
     public Notebook(LinkedHashSet<Record> notebook) {
-        this.notebook = notebook;
+        Notebook.notebook = notebook;
     }
 
-    public LinkedHashSet<Record> getNotebook() {
+    public static LinkedHashSet<Record> getNotebook() {
         return notebook;
     }
 
     public void setNotebook(LinkedHashSet<Record> notebook) {
-        this.notebook = notebook;
+        Notebook.notebook = notebook;
     }
 
     public boolean addRecord(Record record) {

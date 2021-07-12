@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 /**
  * View of the program.
  *
- * @version 2.0 7 June 2021
+ * @version 2.0 12 June 2021
  * @author Yaroslav Avramenko
  */
 public class View {
@@ -19,6 +19,10 @@ public class View {
 
     public void printMessage(String message){
         System.out.println(bundle.getString(message));
+    }
+
+    public void printError(String error){
+        System.err.println(bundle.getString(error));
     }
 
 }

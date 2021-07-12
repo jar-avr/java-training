@@ -12,7 +12,7 @@ import static ua.training.views.TextConstants.*;
 /**
  * Controller of the program.
  *
- * @version 1.0 2 June 2021
+ * @version 2.0 12 June 2021
  * @author Yaroslav Avramenko
  */
 public class RegistrationController {
@@ -26,9 +26,6 @@ public class RegistrationController {
         this.sc = sc;
     }
 
-    /**
-     * Work method.
-     */
     public void inputRecords() {
         boolean runner = true;
 
@@ -57,8 +54,14 @@ public class RegistrationController {
         view.printMessage(FIRST_INPUT_PROMPT);
         record.setName(inputFieldWithScanner(sc, NAME_PROMPT, nameRegex));
         record.setSurname(inputFieldWithScanner(sc, SURNAME_PROMPT, surnameRegex));
-        record.setLogin(inputFieldWithScanner(sc, LOGIN_PROMPT, REGEX_LOGIN));
-        return record;
+        while (true) {
+            try {
+                record.setAndCheckLogin(inputFieldWithScanner(sc, LOGIN_PROMPT, REGEX_LOGIN));
+                return record;
+            } catch (IllegalArgumentException e) {
+                view.printError(LOGIN_TAKEN);
+            }
+        }
     }
 
     private String inputFieldWithScanner(Scanner sc, String message, String regex) {
