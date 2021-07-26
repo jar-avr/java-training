@@ -21,7 +21,7 @@ public class StreamOperator {
         return this.stream.summaryStatistics().getMin();
     }
     public int getMinIndex() throws NoSuchElementException {
-        return this.stream.reduce((i, j) -> intArray[i] > intArray[j] ? j : i).getAsInt();
+        return IntStream.range(0, intArray.length).reduce((i, j) -> intArray[i] > intArray[j] ? j : i).getAsInt();
     }
 
     public long countZero() {
