@@ -5,14 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b44dbe5-c1fd-4c3d-a5ad-26b552c20f19" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/ua/kpi/tef/TestUserMealsUtil.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../testClass/src/Worker.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../testClass/src/testWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CollectionTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CollectionTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CollectionTest.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/CollectionTest.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CollectionTest.iws" beforeDir="false" afterPath="$PROJECT_DIR$/CollectionTest.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/kpi/tef/model/UserMeal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/kpi/tef/model/UserMeal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/kpi/tef/model/UserMealWithExceed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/kpi/tef/model/UserMealWithExceed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/kpi/tef/util/UserMealsUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/kpi/tef/util/UserMealsUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ua/kpi/tef/AppTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../JunitHomework/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../JunitHomework/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrainingTask2/src/main/java/ua/training/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrainingTask2/src/main/java/ua/training/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrainingTask2/src/main/java/ua/training/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrainingTask2/src/main/java/ua/training/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrainingTask2/src/main/java/ua/training/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrainingTask2/src/main/java/ua/training/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrainingTask6 (Collections)/src/ua/training/ImmutableArrayListRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrainingTask6 (Collections)/src/ua/training/ImmutableArrayListRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TrainingTask7 (Stream)/src/main/java/ua/training/StreamOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrainingTask7 (Stream)/src/main/java/ua/training/StreamOperator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +173,12 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Application.UserMealsUtil">
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ua.kpi.tef" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.TestUserMealsUtil">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -207,13 +220,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestUserMealsUtil" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CollectionTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ua.kpi.tef.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ua.kpi.tef" />
+      <option name="MAIN_CLASS_NAME" value="ua.kpi.tef.TestUserMealsUtil" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -246,9 +277,11 @@
     <list>
       <item itemvalue="Application.App" />
       <item itemvalue="Application.UserMealsUtil" />
+      <item itemvalue="JUnit.TestUserMealsUtil" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestUserMealsUtil" />
         <item itemvalue="Application.UserMealsUtil" />
         <item itemvalue="Application.App" />
       </list>
@@ -265,7 +298,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1502444071146</updated>
-      <workItem from="1627299193642" duration="7934000" />
+      <workItem from="1627299193642" duration="8344000" />
+      <workItem from="1627479126146" duration="4908000" />
     </task>
     <servers />
   </component>
@@ -311,6 +345,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">

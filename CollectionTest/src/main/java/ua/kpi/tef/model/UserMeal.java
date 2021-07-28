@@ -1,6 +1,7 @@
 package ua.kpi.tef.model;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * GKislin
@@ -29,6 +30,19 @@ public class UserMeal {
 
     public int getCalories() {
         return calories;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserMeal userMeal = (UserMeal) o;
+        return getCalories() == userMeal.getCalories() && getDateTime().equals(userMeal.getDateTime()) && getDescription().equals(userMeal.getDescription());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDateTime(), getDescription(), getCalories());
     }
 }
 

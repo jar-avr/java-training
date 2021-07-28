@@ -1,6 +1,7 @@
 package ua.kpi.tef.model;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * GKislin
@@ -27,5 +28,18 @@ public class UserMealWithExceed {
 
     public boolean isExceed() {
         return exceed;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserMealWithExceed that = (UserMealWithExceed) o;
+        return isExceed() == that.isExceed() && getUserMeal().equals(that.getUserMeal());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUserMeal(), isExceed());
     }
 }
