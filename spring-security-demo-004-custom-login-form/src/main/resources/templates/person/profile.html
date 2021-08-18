@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec = "http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Tax Office</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/css/landing.css}">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+<body>
+
+<div th:replace="index :: header"></div>
+    <!--            <a href="/login" class="button">Login</a>-->
+    <!--    <a href="/" data-th-text="#{site.name}" style="width:15%; text-align: center"></a>-->
+
+<div id="sidebar-wrapper" th:if="${#authentication.getPrincipal().getPerson().getECode()} != null ? true : false">
+    <ul class="sidebar-nav">
+<!--        <li class="sidebar-brand">-->
+<!--            <a href="#">-->
+<!--                Start Bootstrap-->
+<!--            </a>-->
+<!--        </li>-->
+        <li>
+            <a href="/submit-report">Submit a report</a>
+        </li>
+    </ul>
+</div>
+
+    <div class="col-md-6 col-md-offset-3">
+        <div style="width: 100%; text-align: center">
+            <h1 th:text = "#{greeting}"></h1>
+            <h1 th:text = "${#authentication.getPrincipal().getFirstName()}"></h1>
+            <br>
+            <h1 th:text = "#{authentication.label}"></h1>
+            <h1>User</h1>
+            <br>
+            <h1>Your email:</h1>
+            <h1 th:text = "${#authentication.getPrincipal().getEmail()}"></h1>
+            <br>
+            <h1>Your EDRPOU code:</h1>
+            <h1 th:text = "${#authentication.getPrincipal().getPerson().getECode()} != null ? ${#authentication.getPrincipal().getPerson().getECode().eCode} : 'You have not been assigned an EDRPOU code by an inspector yet'"></h1>
+            <br>
+        </div>
+<!--        <div style="padding-top: 100px">-->
+<!--            <a id="custom-btn" class="btn btn-primary" href="/admin/registration" role="button" th:text="#{registration.label}" style="margin-left: auto;-->
+<!--                margin-right: auto; width: auto; background-color: #0d6efd"></a>-->
+<!--        </div>-->
+<!--        <div style="padding-top: 50px">-->
+<!--            <a id="custom-btn2" class="btn btn-primary" href="/users" role="button" th:text="#{registration.label}" style="margin-left: auto;-->
+<!--                margin-right: auto; width: auto; background-color: #0d6efd"></a>-->
+<!--        </div>-->
+    </div>
+</body>
+</html>

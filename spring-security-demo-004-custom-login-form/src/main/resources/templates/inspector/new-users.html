@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:form="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Tax Office</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/css/landing.css}">
+</head>
+<body>
+
+<div th:replace="index :: header"></div>
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <!--        <li class="sidebar-brand">-->
+        <!--            <a href="#">-->
+        <!--                Start Bootstrap-->
+        <!--            </a>-->
+        <!--        </li>-->
+        <li>
+            <a href="/new-reports">New reports</a>
+        </li>
+    </ul>
+</div>
+<div class="container center">
+    <!--            <a href="/login" class="button">Login</a>-->
+    <!--    <a href="/" data-th-text="#{site.name}" style="width:15%; text-align: center"></a>-->
+    <form th:action="@{/new-users}" th:object="${users}" method="post">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">City</th>
+                <th scope="col">Street</th>
+                <th scope="col">Type</th>
+                <th scope="col">EDRPOU code</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user, iteration : ${users.getUsers()}">
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.person.city}"></td>
+                <td th:text="${user.person.street}"></td>
+                <td th:text="${user.person.personType}"></td>
+                <td>
+                        <select th:field="*{users[__${iteration.index}__].person.ECode}" class="form-select" aria-label="Default select example">
+                            <option th:value="000" selected>Select code</option>
+                            <option th:each="eCode: ${eCodes}" th:value="${eCode.ECode}" th:text="${eCode.ECode}"></option>
+                        </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

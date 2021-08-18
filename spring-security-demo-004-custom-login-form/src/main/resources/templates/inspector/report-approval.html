@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec = "http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Tax Office</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/css/landing.css}">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+<body>
+
+<div th:replace="index :: header"></div>
+<!--<div id="sidebar-wrapper" th:if="${#authentication.getPrincipal().getPerson().getECode()} != null ? true : false">-->
+<!--    <ul class="sidebar-nav">-->
+<!--        <li>-->
+<!--            <a href="#">Dashboard</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="#">Shortcuts</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="#">Overview</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="#">Events</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="#">About</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="#">Services</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="#">Contact</a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+        <div th:if="${param.success}">
+            <div class="alert alert-info">
+                The report has been successfully submitted
+            </div>
+        </div>
+
+        <a class="text-info" href="profile" style="text-decoration: none" data-th-text="back"></a>
+        <h1>Report submission</h1>
+        <form th:action="@{/new-reports/report-approval}" th:object="${report}" method="post">
+            <p class="error-message"
+               th:if="${#fields.hasGlobalErrors()}"
+               th:each="error : ${#fields.errors('global')}"
+               th:text="${error}">Validation error</p>
+
+            <div class="form-group">
+                <label for="date" class="control-label">Date</label>
+                <input id="date" class="form-control" readonly th:field="*{date}"/>
+            </div>
+            <div class="form-group">
+                <label for="type" class="control-label">Type</label>
+                <input id="type" class="form-control" readonly th:field="*{type}"/>
+            </div>
+            <div class="form-group">
+                <label for="ecode" class="control-label">ECode</label>
+                <input id="ecode" class="form-control" readonly th:field="*{person.ECode.ECode}"/>
+            </div>
+            <div class="form-group">
+                <label for="comment" class="control-label">Comment</label>
+                <input type="text" id="comment" class="form-control" th:field="*{comment}"/>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success" name="accept" value="Accept">Accept</button>
+                <button type="submit" class="btn btn-success" name="cancel" value="Cancel">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
