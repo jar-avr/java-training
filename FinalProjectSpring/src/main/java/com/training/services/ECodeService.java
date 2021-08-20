@@ -1,13 +1,8 @@
 package com.training.services;
 
 import com.training.entity.ECode;
-import com.training.entity.Role;
-import com.training.entity.User;
 import com.training.repository.ECodeRepository;
-import com.training.repository.PersonRepository;
-import com.training.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;

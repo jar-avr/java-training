@@ -15,27 +15,13 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class NewReportsApprovalController {
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private ReportService reportService;
-
-//    @ModelAttribute("reports")
-//    public ReportsWrapper reportsWrapper() {
-//        return reportService.findAllNewReports();
-//    }
 
     @GetMapping("/new-reports")
     public String showNewReports(Model model) {
         model.addAttribute("reports", reportService.findAllNewReports());
         return "inspector/new-reports";
     }
-
-//    @PostMapping
-//    public String updateNewReports(@ModelAttribute("reports") ReportsWrapper reportsWrapper, BindingResult bindingResult) {
-//        reportService.updateNewRecords(reportsWrapper.getReports());
-//        return "redirect:/new-reports";
-//    }
 
     @GetMapping("/new-reports/report-approval")
     public String showReportToApprove(@RequestParam(value = "id") Long id, Model model) {

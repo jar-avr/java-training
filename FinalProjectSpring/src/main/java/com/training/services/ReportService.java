@@ -14,15 +14,11 @@ import java.util.Optional;
 
 @Service
 public class ReportService {
-    private final UserRepository userRepository;
-    private final PersonRepository personRepository;
     private final ReportRepository reportRepository;
 
 
     @Autowired
     public ReportService(UserRepository userRepository, PersonRepository personRepository, ReportRepository reportRepository) {
-        this.userRepository = userRepository;
-        this.personRepository = personRepository;
         this.reportRepository = reportRepository;
     }
 
@@ -38,11 +34,6 @@ public class ReportService {
 
     public List<Report> findAllNewReports() {
         return reportRepository.findAllByStatus(ReportStatus.SUBMITTED);
-    }
-
-    @Transactional
-    public void updateNewRecords(List<Report> reports) {
-        reports.forEach(reportRepository::save);
     }
 
     public Report findById(Long id) throws Exception {

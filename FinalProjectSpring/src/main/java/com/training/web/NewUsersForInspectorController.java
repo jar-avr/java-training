@@ -1,11 +1,6 @@
 package com.training.web;
 
-import com.training.dto.InspectorRegistrationDto;
-import com.training.dto.PersonRegistrationDto;
 import com.training.dto.UsersWrapper;
-import com.training.entity.ECode;
-import com.training.entity.Person;
-import com.training.entity.User;
 import com.training.services.ECodeService;
 import com.training.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/new-users")

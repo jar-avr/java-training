@@ -100,8 +100,6 @@ public class UserService implements UserDetailsService {
         return this.userRepository.findByEmail(email).orElseThrow(() ->
                 new UsernameNotFoundException("User with email " + email + " was not found!"));
     }
-//    new org.springframework.security.core.userdetails.User(user.getFirstName(), user.getPassword(),
-//            Arrays.asList(new SimpleGrantedAuthority(user.getRole().getAuthority())))
 
     public List<User> findAll() {
         return userRepository.findAll();

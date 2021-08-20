@@ -31,11 +31,4 @@ public class MainController {
     public String getProfile() {
         return "person/profile";
     }
-
-//    @GetMapping("/registration")
-//    public String showRegistrationForm(Model model) {
-//        User user = new User();
-//        model.addAttribute(user);
-//        return "registration-form";
-//    }
 }

@@ -25,9 +25,6 @@ import java.security.Principal;
 public class ReportSubmissionController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private ReportService reportService;
 
 

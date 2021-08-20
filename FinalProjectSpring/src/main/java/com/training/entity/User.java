@@ -77,20 +77,4 @@ public class User implements UserDetails {
         return id + " " + firstName + " " + lastName + " " + email + " " + person.getCity() + " " + person.getStreet()
                 + " " + person.getPersonType() + " " + person.getECode();
     }
-
-//    @Column(name = "account_non_expired", nullable = false)
-//    private boolean accountNonExpired;
-//
-//    @Column(name = "account_non_locked", nullable = false)
-//    private boolean accountNonLocked;
-//
-//    @Column(name = "credentials_non_expired", nullable = false)
-//    private boolean credentialsNonExpired;
-//
-//    @Column(name = "enabled", nullable = false)
-//    private boolean enabled;
-//
-//    @Column(name = "authorities")
-//    @Enumerated(EnumType.STRING)
-//    private List<Role> authorities;
 }
