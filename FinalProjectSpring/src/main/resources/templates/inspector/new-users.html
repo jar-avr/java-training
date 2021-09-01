@@ -9,6 +9,22 @@
           rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" th:href="@{/css/landing.css}">
+
+    <style>
+        .small {
+            font-size: 12px;
+        }
+    </style>
+
+<!--    <script>-->
+<!--        // $('#form').submit(function() {-->
+<!--        //     document.getElementById('hidden-eCod').value = document.getElementById('select-eCode').value-->
+<!--        //     return true;-->
+<!--        // });-->
+<!--        function set() {-->
+<!--            document.getElementById('hidden-eCod').value = document.getElementById('select-eCode').value-->
+<!--        }-->
+<!--    </script>-->
 </head>
 <body>
 
@@ -25,38 +41,93 @@
         </li>
     </ul>
 </div>
+<p id="hidden-eCod"></p>
 <div class="container center">
     <!--            <a href="/login" class="button">Login</a>-->
     <!--    <a href="/" data-th-text="#{site.name}" style="width:15%; text-align: center"></a>-->
     <form th:action="@{/new-users}" th:object="${users}" method="post">
-        <table class="table">
+        <table class="table" style="font-size: 24px">
             <thead>
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Surname</th>
-                <th scope="col">City</th>
-                <th scope="col">Street</th>
-                <th scope="col">Type</th>
+                <th scope="col">
+                    <span style="display:table-cell; vertical-align:middle; padding-right: 10px">Name</span>
+                    <span style="float: right">
+                        <div>
+                            <a th:href="@{/new-users(page=${users.getPageNumber()}, sort_by='first_name', sort_direction='ASC')}" class="btn btn-primary small">ASC</a>
+                            <a th:href="@{/new-users(page=${users.getPageNumber()}, sort_by='first_name', sort_direction='DESC')}" class="btn btn-primary small">DESC</a>
+                        </div>
+                    </span>
+                </th>
+                <th scope="col">
+                    <span style="display:table-cell; vertical-align:middle; padding-right: 10px">Surname</span>
+                    <span style="float: right">
+                        <div>
+                            <a th:href="@{/new-users(page=${users.getPageNumber()}, sort_by='last_name', sort_direction='ASC')}" class="btn btn-primary small">ASC</a>
+                            <a th:href="@{/new-users(page=${users.getPageNumber()}, sort_by='last_name', sort_direction='DESC')}" class="btn btn-primary small">DESC</a>
+                        </div>
+                    </span>
+                </th>
+                <th scope="col">
+                    <span style="display:table-cell; vertical-align:middle; padding-right: 10px">City</span>
+                    <span style="float: right">
+                        <div>
+                            <a th:href="@{/new-users(page=${users.getPageNumber()}, sort_by='p.city', sort_direction='ASC')}" class="btn btn-primary small">ASC</a>
+                            <a th:href="@{/new-users(page=${users.getPageNumber()}, sort_by='p.city', sort_direction='DESC')}" class="btn btn-primary small">DESC</a>
+                        </div>
+                    </span>
+                </th>
+                <th scope="col">
+                    <span style="display:table-cell; vertical-align:middle; padding-right: 10px">Street</span>
+                    <span style="float: right">
+                        <div>
+                            <a th:href="@{/new-users(page=${users.getPageNumber()}, sort_by='p.street', sort_direction='ASC')}" class="btn btn-primary small">ASC</a>
+                            <a th:href="@{/new-users(page=${users.getPageNumber()}, sort_by='p.street', sort_direction='DESC')}" class="btn btn-primary small">DESC</a>
+                        </div>
+                    </span>
+                </th>
+                <th scope="col">
+                    <span style="display:table-cell; vertical-align:middle; padding-right: 10px">Type</span>
+                    <span style="float: right">
+                        <div>
+                            <a th:href="@{/new-users(page=${users.getPageNumber()}, sort_by='p.person_type', sort_direction='ASC')}" class="btn btn-primary small">ASC</a>
+                            <a th:href="@{/new-users(page=${users.getPageNumber()}, sort_by='p.person_type', sort_direction='DESC')}" class="btn btn-primary small">DESC</a>
+                        </div>
+                    </span>
+                </th>
                 <th scope="col">EDRPOU code</th>
+<!--                <th scope="col">Submit new user</th>-->
             </tr>
             </thead>
             <tbody>
-            <tr th:each="user, iteration : ${users.getUsers()}">
+            <tr th:each="user, iteration : *{userPage}">
                 <td th:text="${user.firstName}"></td>
                 <td th:text="${user.lastName}"></td>
                 <td th:text="${user.person.city}"></td>
                 <td th:text="${user.person.street}"></td>
                 <td th:text="${user.person.personType}"></td>
                 <td>
-                        <select th:field="*{users[__${iteration.index}__].person.ECode}" class="form-select" aria-label="Default select example">
-                            <option th:value="000" selected>Select code</option>
-                            <option th:each="eCode: ${eCodes}" th:value="${eCode.ECode}" th:text="${eCode.ECode}"></option>
-                        </select>
+                    <select th:field="*{userPage[__${iteration.index}__].person.ECode}" class="form-select" aria-label="Default select example">
+                        <option th:value="000" selected>Select code</option>
+                        <option th:each="eCode: ${eCodes}" th:value="${eCode.ECode}" th:text="${eCode.ECode}"></option>
+                    </select>
                 </td>
+<!--                <td>-->
+<!--                    <form id="form" th:action="@{/new-users}" th:object="${idAndECode}" method="post">-->
+<!--                        <input type="hidden" th:value="${user.id}" name="id" />-->
+<!--                        <input id="hidden-eCode" type="hidden" name="eCode" />-->
+<!--                        <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--                    </form>-->
+<!--                </td>-->
             </tr>
             </tbody>
         </table>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <span style="float: right">
+                <a th:if="${1 < users.getPageNumber()}" th:href="@{/new-users(page=${users.getPageNumber()-1})}" class="btn btn-primary">Previous Page</a>
+                <a th:if="${users.getTotalPages() > users.getPageNumber()}" th:href="@{/new-users(page=${users.getPageNumber()+1})}" class="btn btn-primary">Next Page</a>
+            </span>
+        </div>
     </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -1,5 +1,9 @@
 package com.training.web;
 
+import com.training.entity.User;
+import com.training.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/")
     public String getMainPage() {
         return "index";
@@ -28,7 +35,8 @@ public class MainController {
     }
 
     @RequestMapping("/profile")
-    public String getProfile() {
+    public String getProfile(Model model, Authentication authentication) {
+        model.addAttribute("user", userService.findByEmail(((User) authentication.getPrincipal()).getEmail()));
         return "person/profile";
     }
 }

@@ -3,13 +3,17 @@ package com.training.services;
 import com.training.dto.InspectorRegistrationDto;
 import com.training.dto.PersonRegistrationDto;
 import com.training.dto.UsersWrapper;
-import com.training.entity.*;
-import com.training.repository.ECodeRepository;
+import com.training.entity.Person;
+import com.training.entity.Role;
+import com.training.entity.User;
 import com.training.repository.PersonRepository;
 import com.training.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,20 +22,13 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PersonRepository personRepository;
-
-
-    @Autowired
-    public UserService(UserRepository userRepository, PersonRepository personRepository) {
-        this.userRepository = userRepository;
-        this.personRepository = personRepository;
-    }
 
     @PostConstruct
     public void init() {
@@ -105,16 +102,26 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-    public UsersWrapper findAllNewUsers() {
-        return new UsersWrapper(userRepository.findAllByECodeIsNull());
+    public UsersWrapper findAllNewUsers(int page, int size, String sort_by, String sort_direction) {
+        Page<User> retrievedPage = userRepository.findAllByECodeIsNull(PageRequest.of(page - 1, size, Sort.by(Sort.Direction.valueOf(sort_direction), sort_by)));
+        return new UsersWrapper(retrievedPage.getContent(), retrievedPage.getNumber() + 1, retrievedPage.getTotalPages());
     }
 
     public User save(User user) {
         return userRepository.save(user);
     }
 
+    public User findByEmail(String email) {
+        return this.userRepository.findByEmail(email).orElseThrow(() ->
+                new UsernameNotFoundException("User with email " + email + " was not found!"));
+    }
+
+    public void updateECodeWherePersonId(long id, long eCode) {
+        personRepository.updateECodeWherePersonId(id, eCode);
+    }
+
     @Transactional
     public void savePersonsWithECode(List<User> users) {
-        users.forEach(userRepository::save);
+        users.stream().filter(user -> user.getPerson().getECode() != null).forEach(this::save);
     }
 }

@@ -1,6 +1,8 @@
 package com.training.repository;
 
 import com.training.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -16,7 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(value = "select * from users u " +
             "join persons p on u.id = p.user_id where e_code is null", nativeQuery = true)
-    List<User> findAllByECodeIsNull();
+    Page<User> findAllByECodeIsNull(Pageable pageable);
 
 //    @Modifying
 //    @Query("update persons p set p.e_code = * from users u join persons p on u.id = p.user_id where e_code is null")

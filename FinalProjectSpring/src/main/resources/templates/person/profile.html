@@ -16,7 +16,7 @@
     <!--            <a href="/login" class="button">Login</a>-->
     <!--    <a href="/" data-th-text="#{site.name}" style="width:15%; text-align: center"></a>-->
 
-<div id="sidebar-wrapper" th:if="${#authentication.getPrincipal().getPerson().getECode()} != null ? true : false">
+<div id="sidebar-wrapper" th:if="${user.getPerson().getECode()} != null ? true : false">
     <ul class="sidebar-nav">
 <!--        <li class="sidebar-brand">-->
 <!--            <a href="#">-->
@@ -32,16 +32,16 @@
     <div class="col-md-6 col-md-offset-3">
         <div style="width: 100%; text-align: center">
             <h1 th:text = "#{greeting}"></h1>
-            <h1 th:text = "${#authentication.getPrincipal().getFirstName()}"></h1>
+            <h1 th:text = "${user.getFirstName()}"></h1>
             <br>
             <h1 th:text = "#{authentication.label}"></h1>
             <h1>User</h1>
             <br>
             <h1>Your email:</h1>
-            <h1 th:text = "${#authentication.getPrincipal().getEmail()}"></h1>
+            <h1 th:text = "${user.getEmail()}"></h1>
             <br>
             <h1>Your EDRPOU code:</h1>
-            <h1 th:text = "${#authentication.getPrincipal().getPerson().getECode()} != null ? ${#authentication.getPrincipal().getPerson().getECode().eCode} : 'You have not been assigned an EDRPOU code by an inspector yet'"></h1>
+            <h1 th:text = "${user.getPerson().getECode()} != null ? ${user.getPerson().getECode().eCode} : 'You have not been assigned an EDRPOU code by an inspector yet'"></h1>
             <br>
         </div>
 <!--        <div style="padding-top: 100px">-->

@@ -17,7 +17,6 @@ public class ReportService {
     private final ReportRepository reportRepository;
 
 
-    @Autowired
     public ReportService(UserRepository userRepository, PersonRepository personRepository, ReportRepository reportRepository) {
         this.reportRepository = reportRepository;
     }
