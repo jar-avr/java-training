@@ -23,7 +23,7 @@
 
     <filter>
         <filter-name>CookieLocaleFilter</filter-name>
-        <filter-class>ru.javavision.filter.CookieLocaleFilter</filter-class>
+        <filter-class>com.training.filter.CookieLocaleFilter</filter-class>
     </filter>
 
     <filter-mapping>
@@ -33,7 +33,7 @@
 
     <filter>
         <filter-name>AuthFilter</filter-name>
-        <filter-class>ru.javavision.filter.AuthFilter</filter-class>
+        <filter-class>com.training.filter.AuthFilter</filter-class>
     </filter>
 
     <filter-mapping>
@@ -45,7 +45,7 @@
 
 <!--    <filter>-->
 <!--        <filter-name>LoginFilter</filter-name>-->
-<!--        <filter-class>ru.javavision.filter.LoginFilter</filter-class>-->
+<!--        <filter-class>com.training.filter.LoginFilter</filter-class>-->
 <!--    </filter>-->
 
 <!--    <filter-mapping>-->
@@ -55,7 +55,7 @@
 
     <servlet>
         <servlet-name>FrontController</servlet-name>
-        <servlet-class>ru.javavision.FrontController</servlet-class>
+        <servlet-class>com.training.FrontController</servlet-class>
     </servlet>
 
     <servlet-mapping>
